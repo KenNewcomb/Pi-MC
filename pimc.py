@@ -1,5 +1,6 @@
 import random
 import sys
+import math
 
 # Get number of steps
 steps = int(sys.argv[1])
@@ -23,4 +24,6 @@ for point in point_list:
 	if point[0]**2 + point[1]**2 <= 1:
 		incount += 1 
 
-print(4*(incount/len(point_list)))
+pi_approx = 4*(incount/len(point_list))
+print("Pi approximation = " + str(pi_approx))
+print("Deviation from real value = " + str(abs(pi_approx-math.pi)))
