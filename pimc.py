@@ -2,28 +2,32 @@ import random
 import sys
 import math
 
-# Get number of steps
-steps = int(sys.argv[1])
+# Get tolerance from first command line parameter
+tol = float(sys.argv[1])
 
-# Generate a 1X1 Square with a circle within it
-# d = l = 1
+# Initialize various variables
+pi_approx = 0
+in_count = 0
+step = 0
 
-point_list = []
+print("Approximating pi..."),
+sys.stdout.flush()
 
-# Randomly populate the point list
+# While pi is not within given tolerance
+while(abs(pi_approx - math.pi) >= tol):
 
-for point in range(0, steps):
+	step += 1
+	# Generate random values for x,y coordinates
 	x = random.random()
 	y = random.random()
-	point_list.append((x,y))
+	
+	# if (x,y) is within a circle of radius 1
+	if x**2 + y**2 <= 1:
+		in_count += 1
+	
+	# Ratio of square to circle area = pi/4
+	pi_approx = 4*(float(in_count) / step)
 
-# Count how many points are within circle
-incount = 0.0
-
-for point in point_list:
-	if point[0]**2 + point[1]**2 <= 1:
-		incount += 1 
-
-pi_approx = 4*(incount/len(point_list))
-print("Pi approximation = " + str(pi_approx))
-print("Deviation from real value = " + str(abs(pi_approx-math.pi)))
+print("done.")
+print("Approximate value of pi: " + str(pi_approx))
+print("Number of iterations: " + str(step))

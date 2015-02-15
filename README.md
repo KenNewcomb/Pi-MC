@@ -6,4 +6,4 @@ An approximation of pi using the [Monte Carlo](https://en.wikipedia.org/wiki/Mon
 Usage
 ------
 
-	python pimc.py <number_of_iterations>
+	python pimc.py <tolerance>
